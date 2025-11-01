@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="strawberry">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.032427 0.032122 0.03338"
+        rpy="0 0 0" />
+      <mass
+        value="0.54932" />
+      <inertia
+        ixx="1.3326E-04"
+        ixy="-6.1122E-11"
+        ixz="-1.0858E-10"
+        iyy="1.3326E-04"
+        iyz="-2.5323E-9"
+        izz="1.1616E-04" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://strawberry/meshes/base_link.STL"  scale="0.75 0.75 0.75"/>
+      </geometry>
+      <material
+        name="strawberry_red">
+        <color
+          rgba="0.76863 0.20784 0.15294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://strawberry/meshes/base_link.STL" scale="0.75 0.75 0.75"/>
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="-0.0017984 -0.00078541 0.051662"
+        rpy="0 0 0" />
+      <mass
+        value="0.00069143" />
+      <inertia
+        ixx="5.8956E-08"
+        ixy="3.1954E-10"
+        ixz="1.1152E-14"
+        iyy="4.7333E-08"
+        iyz="5.7909E-14"
+        izz="1.0617E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://strawberry/meshes/link1.STL"  scale="0.75 0.75 0.75"/>
+      </geometry>
+      <material
+        name="green_leaf">
+        <color
+          rgba="0.05098 0.98039 0.51373 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://strawberry/meshes/link1.STL"  scale="0.75 0.75 0.75"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="fixed">
+    <origin
+      xyz="0.02751075 -0.00266205 0.02322675"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

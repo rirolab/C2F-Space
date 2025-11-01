@@ -1,6 +1,3 @@
-[submodule "sgg/GroundingDINO"]
-	path = sgg/GroundingDINO
-	url = https://github.com/IDEA-Research/GroundingDINO.git
 [submodule "sgg/Grounded-Segment-Anything"]
 	path = sgg/Grounded-Segment-Anything
 	url = https://github.com/IDEA-Research/Grounded-Segment-Anything.git

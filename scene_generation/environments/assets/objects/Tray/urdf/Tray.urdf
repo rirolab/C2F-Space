@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Tray">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.16463 0.21426 0.29227"
+        rpy="0 0 0" />
+      <mass
+        value="0.48026" />
+      <inertia
+        ixx="0.006337"
+        ixy="-7.4182E-07"
+        ixz="-1.0975E-06"
+        iyy="0.003564"
+        iyz="-6.8508E-06"
+        izz="0.0098734" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Tray/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="plastic">
+        <color
+          rgba="0.18039 0.18039 0.18039 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Tray/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+</robot>

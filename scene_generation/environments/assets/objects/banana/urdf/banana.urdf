@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="banana">
+  <link
+    name="base_link">
+    <!-- <inertial>
+      <origin
+        xyz="0.0 0.00 0.01585"
+        rpy="0 0 0" />
+      <mass
+        value="0.20408" />
+      <inertia
+        ixx="0.00035264"
+        ixy="1.9947E-07"
+        ixz="-5.5335E-05"
+        iyy="0.00039216"
+        iyz="-2.4782E-06"
+        izz="7.9795E-05" />
+    </inertial> -->
+    <inertial>
+      <origin
+        xyz="0.0 0.00 0.0"
+        rpy="0 0 0" />
+      <mass
+        value="0.20408" />
+      <inertia
+        ixx="0.0"
+        ixy="4.0E-06"
+        ixz="5.7E-06"
+        iyy="0.0"
+        iyz="7.7E-06"
+        izz="0.0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://banana/meshes/mesh_test.stl" scale="SCALE0 SCALE1 SCALE2"/>
+      </geometry>
+      <material
+        name="banana">
+        <color
+          rgba="1 0.95 0.10 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://banana/meshes/mesh_test.stl" scale="SCALE0 SCALE1 SCALE2"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

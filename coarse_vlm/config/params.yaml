@@ -1,0 +1,19 @@
+# This file contains the default params for the spatial reasoner
+# Grid Parameters
+grid_size: 100              # Size of the grid in pixels
+grid_color: [0,0,0]         # Color of the grids in BGR
+
+# Output folder relative path
+output_folder: "output/demo/"
+
+# Dataset folder relative path
+dataset_folder: "data/demo/"
+
+vlm_type: o4-mini-2025-04-16
+
+llm_type: o4-mini-2025-04-16
+
+# Max number of generator-validator iterations allowed
+N_iter: 2
+
+fixed_radius: 20             # size of circular region if output_shape = point_fixed
