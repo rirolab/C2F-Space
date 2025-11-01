@@ -51,8 +51,8 @@ class DemoGPS:
         for mode in ["train", "val", "test"]:
             if os.path.exists(f"data/composite-{mode}"):
                 shutil.rmtree(f"data/composite-{mode}")
-        if os.path.exists("datasets/LINGOSuperpixels"):
-            shutil.rmtree("datasets/LINGOSuperpixels")
+        if os.path.exists("datasets/C2FSuperpixels"):
+            shutil.rmtree("datasets/C2FSuperpixels")
         os.makedirs("data/composite-test/images/0")
         os.makedirs("data/composite-test/results/0")
         os.makedirs("data/composite-test/priors/0")

@@ -551,8 +551,8 @@ def preformat_COCOSuperpixels(dataset_dir, name, slic_compactness):
     )
     return dataset
 
-def preformat_LINGOSuperpixels(dataset_dir, name, slic_compactness):
-    """Load and preformat LINGOSuperpixels dataset.
+def preformat_C2FSuperpixels(dataset_dir, name, slic_compactness):
+    """Load and preformat C2FSuperpixels dataset.
 
     Args:
         dataset_dir: path where to store the cached dataset
@@ -561,7 +561,7 @@ def preformat_LINGOSuperpixels(dataset_dir, name, slic_compactness):
     """
     print(dataset_dir)
     dataset = join_dataset_splits(
-        [LINGOSuperpixels(root=dataset_dir, name=name,
+        [C2FSuperpixels(root=dataset_dir, name=name,
                          slic_compactness=slic_compactness,
                          split=split)
          for split in ['train', 'val', 'test']]

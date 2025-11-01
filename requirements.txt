@@ -12,7 +12,7 @@ imageio==2.9.0
 gym==0.17.3 
 opencv-python==4.1.2.30
 colorama==0.4.6
-scikit-image
+scikit-image==0.18.2
 httpx==0.27.0
 pandas
 gdown
