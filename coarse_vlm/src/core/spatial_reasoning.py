@@ -27,9 +27,6 @@ class SpatialReasoner():
         self.pkg_path = os.path.dirname(os.path.abspath(__file__)) + "/../../"
         self.load_params()
 
-        # This will remove all the results in the output folder before starting a new evalutaion
-        # self.remove_files()
-
         self.instruction = ""
         self.object_extents = ""
         self.generation_output = []
@@ -53,22 +50,6 @@ class SpatialReasoner():
         self.max_iter = params["N_iter"]
         self.vlm_type = params["vlm_type"]
         self.llm_type = params["llm_type"]
-
-
-    def remove_files(self):
-        """Function to remove all the previous outputs from the output folder
-        """
-
-        output_folder_path = self.pkg_path + self.output_folder
-        try:
-            with os.scandir(output_folder_path) as entries:
-                for entry in entries:
-                    if entry.is_file():
-                        os.unlink(entry.path)
-                    else:
-                        shutil.rmtree(entry.path)
-        except OSError:
-            print("Error occurred while deleting files and subdirectories.")
 
     def result_json(self, file_path, datum_id, instr, instr_type, relevant_objects, region_coordinates, total_time, total_iters):
         """
@@ -279,9 +260,6 @@ class SpatialReasoner():
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             self.img_x, self.img_y = image.shape[1], image.shape[0]
             image_proc = deepcopy(image)
-
-            # Read the scene graph
-            img_id = datum['image_path']
 
             file_path = orignal_img_path.replace("images", "scene_graph").replace(".png", ".json").replace(".jpg", ".json")
             with open(file_path, mode="r", encoding="utf-8") as f:

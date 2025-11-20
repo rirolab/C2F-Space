@@ -1,8 +1,5 @@
-import os
 from openai import OpenAI
 from pydantic import BaseModel
-from typing import List
-import yaml
 
 def call_llm(prompt, api_key, llm_type="gpt-4o"):
     """Function to call the GPT-4V model 

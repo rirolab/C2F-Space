@@ -62,39 +62,6 @@ class Task:
     # Oracle Agent
     # -------------------------------------------------------------------------
 
-    def get_binary_relations(self, rel_obj_id, ref_obj_id, obj_mask):
-        rel_box = self.get_box_from_obj_id(rel_obj_id, obj_mask) # can return zero if some object is on the rel_obj...
-        ref_box = self.get_box_from_obj_id(ref_obj_id, obj_mask)
-        relations_ = []
-
-        x1, y1, x2, y2 = rel_box
-        ctx_x = (x1+x2)/2
-        ctx_y = (y1+y2)/2
-        x1_, y1_, x2_, y2_ = ref_box
-        ctx_x_ = (x1_+x2_)/2
-        ctx_y_ = (y1_+y2_)/2
-
-        if x2 < x1_:
-            relations_.append("left")
-        if x1 > x2_:
-            relations_.append("right")
-        if y2 < y1_:
-            relations_.append("above")
-        if y1 > y2_:
-            relations_.append("below")
-
-   
-        if len(relations_) > 1:
-            relations_.append(f"{relations_[0]} {relations_[1]}")
-        
-        dist = math.sqrt((ctx_x - ctx_x_)**2 + (ctx_y - ctx_y_)**2)
-        if dist < 150:
-            relations_.append("close")
-        elif dist > 300:
-            relations_.append("far") 
-        
-        return relations_
-
     def oracle(self, env):
         """Oracle agent."""
         OracleAgent = collections.namedtuple('OracleAgent', ['act'])
@@ -222,30 +189,7 @@ class Task:
 
         soft_metrics = ["relations"]
 
-        fail = False
-        # while generating data, enforce a stricter reward function
-        if datagen:
-            step_reward = 0
-            goal_check_info = targs[0][2]
-            rel_idxs = goal_check_info["rel_idxs"]
-            ref_idxs = goal_check_info["ref_idxs"]
-            relations = goal_check_info["relations"]
-            obj_ids = goal_check_info["obj_ids"]
-            # print(rel_idxs, ref_idxs, relations)
-            for i in range(len(relations)):
-                rel_id = obj_ids[rel_idxs[i]]
-                ref_id = obj_ids[ref_idxs[i]]
-                try:
-                    binary_relations = self.get_binary_relations(rel_id, ref_id, obj_mask)
-                except Exception as e:
-                    print(e)
-                    # this can happen if an object is placed on top of another object
-                    binary_relations = []
-                if relations[i] not in binary_relations:
-                    print(relations[i], binary_relations)
-                    fail = True
-                    break
-        
+        fail = False        
         if datagen and metric in soft_metrics:
             metric = 'pose'
 
@@ -264,25 +208,6 @@ class Task:
                     if self.is_match(pose, target_pose, symmetry):
                         step_reward += max_reward / len(objs)
                         break
-        elif metric == "relations" or metric == "multi_relation": # this for srem
-            step_reward = 0
-            goal_check_info = targs[0][2]
-            rel_idxs = goal_check_info["rel_idxs"]
-            ref_idxs = goal_check_info["ref_idxs"]
-            relations = goal_check_info["relations"]
-            
-            obj_ids = goal_check_info["obj_ids"]
-            for i in range(len(relations)):
-                rel_id = obj_ids[rel_idxs[i]]
-                ref_id = obj_ids[ref_idxs[i]]
-                try:
-                    binary_relations = self.get_binary_relations(rel_id, ref_id, obj_mask)
-                except Exception as e:
-                    print(e)
-                    # this can happen if an object is placed on top of another object
-                    binary_relations = []
-                if relations[i] in binary_relations:
-                    step_reward += max_reward / len(relations)
         # Evaluate by measuring object intersection with zone.
         # added for baselines
         elif metric == 'zone':
@@ -310,7 +235,7 @@ class Task:
                     total_pts += pts.shape[1]
             step_reward = max_reward * (zone_pts / total_pts)
         else:
-            print(f'Invalid reward metric {metric}.')
+            # print(f'Invalid reward metric {metric}.')
             step_reward = 0
 
                 

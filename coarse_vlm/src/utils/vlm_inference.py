@@ -86,23 +86,18 @@ def call_vlm_generator(prompt, image_path, api_key, output_shape, vlm_type="gpt-
     if output_shape == "polygon" or output_shape == "point_fixed":
         list_of_points = completion.choices[0].message.parsed.final_answer
         steps_followed = completion.choices[0].message.parsed.steps
-        # relevant_objects = completion.choices[0].message.parsed.relevant_objects
-        return list_of_points, steps_followed, []#, relevant_objects
+        return list_of_points, steps_followed, []
     elif output_shape == "ellipse":
         center_coordinates = completion.choices[0].message.parsed.center_coordinates
         axes = completion.choices[0].message.parsed.semi_axes_lengths
         angle = completion.choices[0].message.parsed.angle
         steps_followed = completion.choices[0].message.parsed.steps
-        # relevant_objects = completion.choices[0].message.parsed.relevant_objects
-
-        return center_coordinates, axes, angle, steps_followed, [] #, relevant_objects
+        return center_coordinates, axes, angle, steps_followed, []
     else:
         center_coordinates = completion.choices[0].message.parsed.center_coordinates
         radius = completion.choices[0].message.parsed.radius
         steps_followed = completion.choices[0].message.parsed.steps
-        # relevant_objects = completion.choices[0].message.parsed.relevant_objects
-
-        return center_coordinates, radius, steps_followed, [] #, relevant_objects
+        return center_coordinates, radius, steps_followed, []
 
 def call_vlm_validator(prompt, image_path, api_key, validation_type, vlm_type="gpt-4o"):
     """Function to call the GPT-4V model 

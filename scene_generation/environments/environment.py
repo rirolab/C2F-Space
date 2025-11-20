@@ -17,9 +17,8 @@ import textwrap
 import gym
 import numpy as np
 import pybullet as p
-from itertools import chain
 
-from scene_generation.utils.global_vars import PIXEL_SIZE, CAMERA_CONFIG, BOUNDS, IN_SHAPE
+from scene_generation.utils.global_vars import PIXEL_SIZE, CAMERA_CONFIG, BOUNDS
 from scene_generation.utils import pybullet_utils
 import scene_generation.utils.general_utils as utils
 from sgg.scene_graph import SceneGraphWithGDino
@@ -263,10 +262,7 @@ class Environment(gym.Env):
         Returns:
           (obs, reward, done, info) tuple containing MDP step data.
         """
-        # self.pick_map = pick_map
-        # self.place_map = place_map
         if action is not None:
-            # print(action)
             timeout = self.task.primitive(
                 self.movej, self.movep, self.ee,
                 action['pose0'], action['pose1']
@@ -691,7 +687,7 @@ class Environment(gym.Env):
             [-3.0, -3.0, 1.0],
             angle,
             useFixedBase=True)
-        # import pdb; pdb.set_trace()
+
         boundaries = p.getAABB(obj_id)
         x_c = (boundaries[0][0] + boundaries[1][0])/2
         y_c = (boundaries[0][1] + boundaries[1][1])/2
@@ -699,8 +695,6 @@ class Environment(gym.Env):
         x_d = -3.0-x_c
         y_d = -3.0-y_c
         z_d = 1.0-z_c
-        # print(x_d, y_d, z_d)
-        # print(boundaries)
         lwh = np.array(boundaries[1])-np.array(boundaries[0])
         p.removeBody(obj_id)
         z_d += lwh[2]/2

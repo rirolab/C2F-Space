@@ -97,7 +97,6 @@ class DemoTask(Task):
                 # Initialize with a slightly tilted pose so that the objects aren't always erect.
                 ps = ((pose[0][0] + displacement[0], pose[0][1] + displacement[1], pose[0][2]+displacement[2]), angle)
                 try:
-                    # print(shape_size, size)
                     box_id = env.add_object(urdf, ps)
                     labels[box_id] = object_name
                     if os.path.exists(urdf):

@@ -1,11 +1,17 @@
 <div align="center">
     <h1> <a>C2F-Space: Coarse-to-Fine Space Grounding for Spatial Instructions using Vision-Language Models</a></h1>
 </div>
+<p align="center">
+  <a href="https://arxiv.org/abs/2511.15333">Paper</a> •
+  <a href="https://github.com/rirolab/C2F-Space">Code</a> •
+  <a href="#bibtex">BibTex</a>
+</p>
 
 
 C2F-Space is a coarse-to-fine space-grounding framework that performs coarse reasoning via propose-validate VLM prompting and refines predictions through superpixel-wise residual learning for precise local geometric reasoning.
-
-<img width="1194" alt="image" src="./assets/images/image.png">
+<p align="center">
+    <img width="500" alt="image" src="./assets/images/image.png">
+</p>
 </details>
 
 ## Repository Structure
@@ -67,3 +73,14 @@ sudo apt-get install -y libsm6
 
 ## Acknowledgement
 We thank to open source repositories: [GraphGPS](https://github.com/rampasek/GraphGPS), [cliport](https://github.com/cliport/cliport), and [Grounded-Segment-Anything](https://github.com/IDEA-Research/Grounded-Segment-Anything).
+
+## BibTex
+```
+@article{oh2025c2f,
+  title         = {C2F-Space: Coarse-to-Fine Space Grounding for Spatial Instructions using Vision-Language Models},
+  author        = {Oh, Nayoung and Kim, Dohyun and Bang, Junhyeong and Paul, Rohan and Park, Daehyung},
+  journal       = {arXiv preprint arXiv:2511.15333},
+  year          = {2025},
+  url           = {https://arxiv.org/abs/2511.15333}
+}
+``` 
