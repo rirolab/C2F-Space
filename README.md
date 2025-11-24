@@ -74,6 +74,11 @@ sudo apt-get install -y libsm6
 ## Acknowledgement
 We thank to open source repositories: [GraphGPS](https://github.com/rampasek/GraphGPS), [cliport](https://github.com/cliport/cliport), and [Grounded-Segment-Anything](https://github.com/IDEA-Research/Grounded-Segment-Anything).
 
+```
+This work was supported by Institute of Information & communications Technology Planning & Evaluation (IITP) grant funded by the Korea government (MSIT) (No. RS-2022-II220311, No. RS-2024-00336738, and No. RS-2024-00509279).
+```
+
+
 ## BibTex
 ```
 @article{oh2025c2f,
