@@ -22,7 +22,7 @@ from torch_geometric.graphgym.config import cfg
 random.seed(0)
 np.random.seed(0)
 
-class LINGOSpaceInference:
+class C2FSpaceInference:
     def __init__(self, ckpt_folder="coarse_vlm/checkpoints"):
         self.spatial_reasoner = spatial_reasoning.SpatialReasoner()
         self.dataset_folder = os.path.join("coarse_vlm", self.spatial_reasoner.dataset_folder)
@@ -236,7 +236,7 @@ def _set_environment(args):
 def main():
     argparser = argparse.ArgumentParser()
     argparser.add_argument("--task", default='demo-task', type=str)
-    argparser.add_argument("--ndemos_test", default=1, type=int)
+    argparser.add_argument("--n_demos", default=1, type=int)
     argparser.add_argument("--record", default=False, action='store_true')
     argparser.add_argument("--device", default='cuda', type=str)
     argparser.add_argument("--ckpt_folder", default="coarse_vlm/checkpoints", type=str)
@@ -248,11 +248,11 @@ def main():
     task_info = {
         task_name: {
             'task': task_name,
-            'n_demos': args.ndemos_test,
+            'n_demos': args.n_demos,
         }
     }
     
-    model = LINGOSpaceInference(ckpt_folder=args.ckpt_folder)
+    model = C2FSpaceInference(ckpt_folder=args.ckpt_folder)
     tester = Tester(model, task_info, args)
     tester.run()
 
