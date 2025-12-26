@@ -1,11 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-from PIL import Image, ImageDraw
+from PIL import Image
 import cv2
-from skimage import measure
-import math
-from copy import deepcopy
 
 def add_grid(img, grid_size, grid_color, grid_lines, save_path=None):
     """Function to add grids to the image.
